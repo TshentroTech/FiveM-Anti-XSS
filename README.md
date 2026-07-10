@@ -1,6 +1,6 @@
 # tech-SecureShield
-- ** My Tebex Store tshentro.tebex.io **
-- ** If you would like to support me, you can take a look at my scripts: https://tshentro.tebex.io **
+- My Tebex Store tshentro.tebex.io
+- If you would like to support me, you can take a look at my scripts: https://tshentro.tebex.io
 
 A secure, multi-layered admin messaging system for FiveM servers with comprehensive security features, rate limiting, and Discord webhook logging.
 
