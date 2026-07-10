@@ -1,0 +1,145 @@
+/* Enhanced Security and UI Styles */
+
+/* Reset and Base Security */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    pointer-events: none; /* Global interaction protection */
+    user-select: none; /* Prevent text selection by default */
+    -webkit-tap-highlight-color: transparent;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+                 Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    isolation: isolate; /* Create stacking context */
+}
+
+/* Secure Message Container */
+#message-container {
+    display: none;
+    position: fixed; /* More reliable than absolute */
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 20px 30px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(0, 0, 0, 0.08);
+    max-width: min(80%, 600px); /* Responsive width with limit */
+    width: auto;
+    z-index: 2147483647; /* Maximum safe z-index */
+    
+    /* Security Features */
+    pointer-events: auto; /* Re-enable interactions */
+    contain: content; /* Performance and security isolation */
+    overflow: hidden;
+    
+    /* Animation Protection */
+    animation: none !important;
+    transition: none !important;
+    
+    /* Accessibility */
+    outline: none;
+    
+    /* Additional Protection */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    filter: none;
+}
+
+/* Secure Message Content */
+#message {
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+    color: inherit;
+    
+    /* Content Security */
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    
+    /* Scroll Protection */
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+    
+    /* Enable text selection only for message content */
+    user-select: text;
+    pointer-events: auto;
+    
+    /* Prevent text overflow */
+    text-overflow: ellipsis;
+    
+    /* Additional Protection */
+    white-space: pre-wrap;
+    unicode-bidi: isolate;
+    direction: ltr;
+    
+    /* Prevent CSS injection via pseudo-elements */
+    content: none !important;
+}
+
+/* Scrollbar Styling */
+#message::-webkit-scrollbar {
+    width: 6px;
+}
+
+#message::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#message::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+/* Security-focused Media Queries */
+@media screen and (max-width: 768px) {
+    #message-container {
+        top: 10%;
+        max-width: 90%;
+        padding: 15px 20px;
+    }
+    
+    #message {
+        font-size: 16px;
+        max-height: 60vh;
+    }
+}
+
+/* High-contrast and Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    #message-container {
+        background-color: #000000;
+        color: #ffffff;
+        box-shadow: 0 0 0 2px #ffffff;
+    }
+}
+
+/* Print Protection */
+@media print {
+    #message-container {
+        display: none !important;
+    }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safe Message</title>
+
+    <!-- Enhanced Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'none';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self';
+        font-src 'self';
+        connect-src 'self' https://discord.com;
+        form-action 'none';
+        base-uri 'none';
+        object-src 'none';
+        manifest-src 'none';
+        media-src 'none';
+        worker-src 'none';" />
+
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta name="referrer" content="no-referrer" />
+
+    <!-- Permissions Policy to restrict features -->
+    <meta http-equiv="Permissions-Policy" content="
+        camera=(),
+        microphone=(),
+        geolocation=(),
+        payment=(),
+        usb=(),
+        battery=(),
+        document-domain=(),
+        autoplay=(),
+        fullscreen=()" />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Secure container with additional attributes -->
+    <div id="message-container"
+         data-secure="true"
+         aria-live="polite"
+         role="alert"
+         translate="no">
+        <div id="message"
+             class="secure-content"
+             data-sanitized="true"></div>
+    </div>
+
+    <!-- Load script with proper attributes -->
+    <script src="app.js"
+            defer
+            referrerpolicy="no-referrer"></script>
+
+    <!-- Inline styles with nonce -->
+    <style nonce="random-nonce-value">
+        /* Additional security styles */
+        #message-container {
+            pointer-events: none; /* Prevent unwanted interactions */
+        }
+        #message {
+            pointer-events: auto; /* Re-enable interactions for content */
+            overflow-wrap: break-word;
+            word-break: break-all;
+            max-width: 100%;
+            max-height: 80vh;
+            overflow: auto;
+        }
+    </style>
+</body>
+</html>
