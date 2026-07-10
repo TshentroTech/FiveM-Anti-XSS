@@ -2,6 +2,9 @@
 - My Tebex Store tshentro.tebex.io
 - If you would like to support me, you can take a look at my scripts: https://tshentro.tebex.io
 
+
+<img width="1672" height="941" alt="35" src="https://github.com/user-attachments/assets/aafc2688-b243-4945-94aa-311bd26b692e" />
+
 A secure, multi-layered admin messaging system for FiveM servers with comprehensive security features, rate limiting, and Discord webhook logging.
 
 ## 🛡️ Features
